@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="icon" type="image/png" href="img/icono/icono.jpg">
+    <link rel="stylesheet" href="css/detalle.css">
+    <script src="js/detalle.js" defer></script>
+</head>
+<body>
+<header class="header">
+    <div class="logo">
+        <img src="img/icono/icono.jpg" alt="Logo">
+        <span>Guitanos Autoservicio</span>
+        <span>Brandon Romero y Leonel Gadea</span>
+    </div>
+    <nav class="nav">
+        <a href="index.html">Inicio</a>
+        <a href="Productos.html">Productos</a>
+        <a href="carrito.html">🛒 Carrito</a>
+    </nav>
+</header>
+
+<main class="main">
+    <div class="breadcrumb">
+        <a href="index.html">Inicio</a> / <a href="Productos.html">Productos</a> / <span id="breadcrumb-nombre">Producto</span>
+    </div>
+
+    <div class="container-detalle" id="detalle-container">
+        <div class="loading">Cargando producto...</div>
+    </div>
+
+    <div class="acciones">
+        <button id="btn-carrito" class="btn-principal">Añadir al Carrito</button>
+        <button id="btn-volver" class="btn-secundario">Volver a Productos</button>
+    </div>
+</main>
+
+<footer class="footer">
+    <p>&copy; 2025 Guitanos Autoservicio. Todos los derechos reservados.</p>
+</footer>
+</body>
+</html>

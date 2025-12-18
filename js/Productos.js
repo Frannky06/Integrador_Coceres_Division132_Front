@@ -24,11 +24,13 @@ function mostrarProductos(array) {
     array.forEach(prod => {
         html += `
         <article class="card-producto">
-            <img src="${prod.img}" alt="${prod.nombre}">
-            <h3>${prod.nombre}</h3>
-            <p>Id: ${prod.id}</p>
-            <p>Categoría: ${prod.categoria}</p>
-            <p>Precio: $${prod.precio}</p>
+            <a href="detalle.html?id=${prod.id}" class="producto-link">
+                <img src="${prod.img}" alt="${prod.nombre}">
+                <h3>${prod.nombre}</h3>
+                <p>Id: ${prod.id}</p>
+                <p>Categoría: ${prod.categoria}</p>
+                <p>Precio: $${prod.precio}</p>
+            </a>
             <div class="card-footer">
                 <input type="number" min="1" value="1" class="input-cantidad">
                 <button

@@ -120,6 +120,9 @@ body {
 
 .acciones {
     margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
 }
 
 .btn {
@@ -132,8 +135,19 @@ body {
 }
 
 .btn-principal {
+    background-color: #667eea;
+    color: #ffffff;
+}
+
+.btn-secundario {
     background-color: #00157a;
     color: #ffffff;
+}
+
+.btn-terciario {
+    background-color: #f0f0f0;
+    color: #333;
+    border: 1px solid #ddd;
 }
 
 /*  Tamaño  del logo  */
