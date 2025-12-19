@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const contItems = document.getElementById("ticket-items");
     const spanTotal = document.getElementById("ticket-total");
 
+    // Recuperamos el ticket del localStorage
     const ticket = JSON.parse(localStorage.getItem("ticket")) || null;
 
     if (!ticket) {
@@ -12,6 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
     }
 
+    // Mostrar datos del ticket
     spanCliente.textContent = ticket.cliente;
     spanFecha.textContent = ticket.fecha;
     spanTotal.textContent = `$${ticket.total}`;
@@ -28,7 +30,32 @@ document.addEventListener("DOMContentLoaded", () => {
         contItems.appendChild(div);
     });
 
-if (btnDescargar) {
+    // 🔥 ENVIAR TICKET AL BACKEND (GUARDAR EN BD)
+    fetch("http://localhost:3000/api/ticket", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            nombre_usuario: ticket.cliente,
+            total: ticket.total,
+            productos: ticket.items.map(item => ({
+                producto_id: item.id, // ⚠️ ESTE ID DEBE EXISTIR
+                precio: item.subtotal / item.cantidad,
+                cantidad: item.cantidad
+            }))
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log(" Ticket guardado en la base de datos:", data);
+    })
+    .catch(err => {
+        console.error(" Error al guardar el ticket:", err);
+    });
+
+    // 📄 Descargar ticket en PDF
+    if (btnDescargar) {
         btnDescargar.addEventListener("click", () => {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
